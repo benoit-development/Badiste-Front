@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { PLAYERS } from '../players.mock';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+
 import { Player } from '../players/player';
 
 @Injectable({
@@ -7,29 +9,19 @@ import { Player } from '../players/player';
 })
 export class PlayerService {
 
-  constructor() { }
+  BADISTE_URL = 'http://localhost:5000/api/v1/';
 
-  search(nameFilter: string = null): Player[] {
-    if (nameFilter) {
-      const result = [];
-      PLAYERS.forEach((player: Player) => {
-        if (player.name.toLowerCase().includes(nameFilter.toLowerCase())) {
-          result.push(player);
-        }
-      });
-      return result;
-    } else {
-      return PLAYERS;
-    }
+  players: Player[] = [];
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  search(nameFilter: string = null): Observable<any> {
+    return this.http.get(this.BADISTE_URL.concat(`players?search=${encodeURIComponent(nameFilter)}`));
   }
 
-  findByLicence(license: number): Player {
-    let result = null;
-    PLAYERS.forEach((player: Player) => {
-      if(license === player.license) {
-        result = player;
-      }
-    });
-    return result;
+  findByLicence(license: number): Observable<any> {
+    return this.http.get(this.BADISTE_URL.concat(`players/${encodeURIComponent(license + '')}`));
   }
 }

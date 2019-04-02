@@ -12,7 +12,10 @@ export class PlayersComponent implements OnInit {
 
   players: Player[];
 
-  constructor(private router: Router, private playerService: PlayerService) {
+  constructor(
+    private router: Router,
+    private playerService: PlayerService
+  ) {
   }
 
   ngOnInit() {
@@ -23,11 +26,13 @@ export class PlayersComponent implements OnInit {
     this.router.navigateByUrl(`/player/${player.license}`);
   }
 
-  searchPlayers(): void {
-    this.players = this.playerService.search();
+  searchPlayers(filterName: string = ''): void {
+    this.playerService.search(filterName).subscribe(json => {
+      this.players = json.players;
+    });
   }
 
   onFilterChange(filterName: string) {
-    this.players = this.playerService.search(filterName);
+    this.searchPlayers(filterName);
   }
 }
