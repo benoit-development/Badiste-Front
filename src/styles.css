@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+.btn.btn-secondary.btn-woman {
+  color:#AAA;
+  width: 50%;
+}
+
+.btn.btn-secondary.btn-man {
+  color:#AAA;
+  width: 50%;
+}
+.btn.btn-secondary.btn-woman.active {
+  background-color: #ec1ae7;
+  color:#FFF;
+  border-color: #ec1ae7;
+}
+
+.btn.btn-secondary.btn-man.active {
+  background-color: #17a2b8;
+  color:#FFF;
+  border-color: #17a2b8;
+}
+
+.btn.btn-secondary.btn-active {
+  color:#AAA;
+  width: 50%;
+}
+
+.btn.btn-secondary.btn-inactive {
+  color:#AAA;
+  width: 50%;
+}
+.btn.btn-secondary.btn-active.active {
+  background-color: #1ebe39;
+  color:#FFF;
+  border-color: #1ebe39;
+}
+
+.btn.btn-secondary.btn-inactive.active {
+  background-color: #dd221b;
+  color:#FFF;
+  border-color: #dd221b;
+}
+

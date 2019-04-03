@@ -1,11 +1,43 @@
-<div *ngIf="player">
+<div *ngIf="player" class="col-lg-6 col-sm-12">
 
-  <h2>{{player.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{player.license}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="player.name" placeholder="name"/>
-    </label>
+  <h1>{{player.name}} Details</h1>
+
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fas fa-id-card"></i></span>
+      </div>
+      <input type="text" class="form-control" id="license" [(ngModel)]="player.license" placeholder="License Number">
+    </div>
   </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fas fa-signature"></i></span>
+      </div>
+      <input type="text" class="form-control" id="name" [(ngModel)]="player.name" placeholder="Player Name">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="btn-group btn-group-toggle col-6" data-toggle="buttons">
+      <label class="btn btn-secondary btn-woman" [class.active]="player.gender == 'W'">
+        <input type="radio" value="W" [(ngModel)]="player.gender" > <i class="fas fa-female"></i> Woman
+      </label>
+      <label class="btn btn-secondary btn-man" [class.active]="player.gender == 'M'">
+        <input type="radio" value="M" [(ngModel)]="player.gender" ><i class="fas fa-male"></i> Man
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="btn-group btn-group-toggle col-6" data-toggle="buttons">
+      <label class="btn btn-secondary btn-active" [class.active]="player.active">
+        <input type="radio" value="W" [(ngModel)]="player.active" > <i class="fas fa-check"></i> Active
+      </label>
+      <label class="btn btn-secondary btn-inactive" [class.active]="!player.active">
+        <input type="radio" value="M" [(ngModel)]="player.active" ><i class="fas fa-times"></i> Inactive
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 
 </div>
