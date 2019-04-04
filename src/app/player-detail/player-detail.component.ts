@@ -24,8 +24,12 @@ export class PlayerDetailComponent implements OnInit {
 
   findPlayer() {
     const license = +this.route.snapshot.paramMap.get('license');
-    this.playerService.findByLicence(license).subscribe(json => {
-      this.player = json.player;
-    });
+    if (license) {
+      this.player = new Player();
+    } else {
+      this.playerService.findByLicence(license).subscribe(json => {
+        this.player = json.player;
+      });
+    }
   }
 }

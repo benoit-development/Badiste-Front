@@ -6,6 +6,7 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: '/players', pathMatch: 'full' },
   { path: 'players', component: PlayersComponent },
+  { path: 'player', component: PlayerDetailComponent },
   { path: 'player/:license', component: PlayerDetailComponent },
 ];
 
